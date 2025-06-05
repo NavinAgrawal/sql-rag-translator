@@ -3357,8 +3357,7 @@
     ],
     "geographic_customer_queries": [
       "customers.city_id \u2192 cities.city_id",
-      "cities.state_id \u2192 states.state_id",
-      "For state filtering: JOIN states ON cities.state_id = states.state_id"
+      "cities.state_id \u2192 states.state_id"
     ],
     "branch_employee_queries": [
       "branches.branch_id \u2192 employees.branch_id",
@@ -3387,18 +3386,6 @@
         "accounts.account_id = transactions.account_id"
       ],
       "note": "transactions table has NO customer_id column - must go through accounts"
-    },
-    "geographic_customers": {
-      "description": "For geographic customer queries",
-      "tables": [
-        "customers",
-        "cities",
-        "states"
-      ],
-      "joins": [
-        "customers.city_id = cities.city_id",
-        "cities.state_id = states.state_id"
-      ]
     }
   }
 }
