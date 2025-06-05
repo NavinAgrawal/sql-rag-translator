@@ -1,0 +1,3349 @@
+{
+  "tables": {
+    "accounts": {
+      "columns": [
+        {
+          "name": "account_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('accounts_account_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "customer_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "product_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "branch_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "relationship_manager_id",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "account_number",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "routing_number",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'021000021'::character varying",
+          "max_length": 9,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "iban",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 34,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "swift_code",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 11,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "current_balance",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "available_balance",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "pending_balance",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "minimum_balance",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "overdraft_limit",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 12,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "interest_rate",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.0000",
+          "max_length": null,
+          "precision": 5,
+          "scale": 4,
+          "comment": null
+        },
+        {
+          "name": "penalty_rate",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.0000",
+          "max_length": null,
+          "precision": 5,
+          "scale": 4,
+          "comment": null
+        },
+        {
+          "name": "opened_date",
+          "type": "date",
+          "nullable": true,
+          "default": "CURRENT_DATE",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "closed_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "maturity_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "last_transaction_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "last_statement_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "next_statement_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "status",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'ACTIVE'::character varying",
+          "max_length": 15,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "account_purpose",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "tax_reporting_required",
+          "type": "boolean",
+          "nullable": false,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "regulatory_monitoring",
+          "type": "boolean",
+          "nullable": false,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "daily_transaction_limit",
+          "type": "numeric",
+          "nullable": true,
+          "default": "10000.00",
+          "max_length": null,
+          "precision": 12,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "monthly_transaction_limit",
+          "type": "numeric",
+          "nullable": true,
+          "default": "100000.00",
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "suspicious_activity_flag",
+          "type": "boolean",
+          "nullable": false,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM accounts LIMIT 10;",
+        "SELECT COUNT(*) FROM accounts;",
+        "SELECT * FROM accounts ORDER BY account_id DESC LIMIT 5;",
+        "SELECT * FROM accounts WHERE opened_date >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(opened_date), COUNT(*) FROM accounts GROUP BY DATE(opened_date) ORDER BY DATE(opened_date) DESC LIMIT 10;"
+      ],
+      "row_count": 2000
+    },
+    "branches": {
+      "columns": [
+        {
+          "name": "branch_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('branches_branch_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "region_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "branch_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "branch_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "city_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "address_line1",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "address_line2",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "zip_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "phone",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 15,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "manager_name",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "opened_date",
+          "type": "date",
+          "nullable": true,
+          "default": "CURRENT_DATE",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "closed_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "branch_type",
+          "type": "character varying",
+          "nullable": false,
+          "default": "'FULL_SERVICE'::character varying",
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "square_footage",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "employee_count",
+          "type": "integer",
+          "nullable": true,
+          "default": "0",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM branches LIMIT 10;",
+        "SELECT COUNT(*) FROM branches;",
+        "SELECT * FROM branches ORDER BY branch_id DESC LIMIT 5;",
+        "SELECT * FROM branches WHERE opened_date >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(opened_date), COUNT(*) FROM branches GROUP BY DATE(opened_date) ORDER BY DATE(opened_date) DESC LIMIT 10;"
+      ],
+      "row_count": 150
+    },
+    "cities": {
+      "columns": [
+        {
+          "name": "city_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('cities_city_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "state_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "city_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "population",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "median_income",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 12,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "zip_code_primary",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM cities LIMIT 10;",
+        "SELECT COUNT(*) FROM cities;",
+        "SELECT * FROM cities ORDER BY city_id DESC LIMIT 5;",
+        "SELECT * FROM cities WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(created_at), COUNT(*) FROM cities GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;"
+      ],
+      "row_count": 200
+    },
+    "countries": {
+      "columns": [
+        {
+          "name": "country_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('countries_country_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "country_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 3,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "country_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "currency_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 3,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "tax_rate",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.0000",
+          "max_length": null,
+          "precision": 5,
+          "scale": 4,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM countries LIMIT 10;",
+        "SELECT COUNT(*) FROM countries;",
+        "SELECT * FROM countries ORDER BY country_id DESC LIMIT 5;",
+        "SELECT * FROM countries WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(created_at), COUNT(*) FROM countries GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;"
+      ],
+      "row_count": 10
+    },
+    "customer_segments": {
+      "columns": [
+        {
+          "name": "segment_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('customer_segments_segment_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "segment_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "segment_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "min_relationship_value",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "max_relationship_value",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "benefits_description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "annual_fee",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 8,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM customer_segments LIMIT 10;",
+        "SELECT COUNT(*) FROM customer_segments;",
+        "SELECT * FROM customer_segments ORDER BY segment_id DESC LIMIT 5;",
+        "SELECT * FROM customer_segments WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(created_at), COUNT(*) FROM customer_segments GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;"
+      ],
+      "row_count": 5
+    },
+    "customer_types": {
+      "columns": [
+        {
+          "name": "customer_type_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('customer_types_customer_type_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "type_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 30,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "type_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "requires_business_license",
+          "type": "boolean",
+          "nullable": false,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "requires_ein",
+          "type": "boolean",
+          "nullable": false,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "minimum_age",
+          "type": "integer",
+          "nullable": true,
+          "default": "18",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM customer_types LIMIT 10;",
+        "SELECT COUNT(*) FROM customer_types;",
+        "SELECT * FROM customer_types ORDER BY customer_type_id DESC LIMIT 5;",
+        "SELECT * FROM customer_types WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(created_at), COUNT(*) FROM customer_types GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;"
+      ],
+      "row_count": 5
+    },
+    "customers": {
+      "columns": [
+        {
+          "name": "customer_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('customers_customer_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "customer_number",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "customer_type_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "segment_id",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "relationship_manager_id",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "primary_branch_id",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "first_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "last_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "middle_name",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "date_of_birth",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "ssn",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 11,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "ein",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "email",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "phone_primary",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 15,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "phone_secondary",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 15,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "address_line1",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "address_line2",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "city_id",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "zip_code",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "annual_income",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "employment_status",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 30,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "employer_name",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "occupation",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "credit_score",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "customer_since",
+          "type": "date",
+          "nullable": true,
+          "default": "CURRENT_DATE",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "last_contact_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "next_review_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "risk_rating",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'MEDIUM'::character varying",
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "kyc_status",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'PENDING'::character varying",
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "aml_status",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'CLEAR'::character varying",
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "total_relationship_value",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "lifetime_value",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM customers LIMIT 10;",
+        "SELECT COUNT(*) FROM customers;",
+        "SELECT * FROM customers ORDER BY customer_id DESC LIMIT 5;",
+        "SELECT * FROM customers WHERE date_of_birth >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(date_of_birth), COUNT(*) FROM customers GROUP BY DATE(date_of_birth) ORDER BY DATE(date_of_birth) DESC LIMIT 10;"
+      ],
+      "row_count": 1000
+    },
+    "departments": {
+      "columns": [
+        {
+          "name": "department_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('departments_department_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "department_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "department_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM departments LIMIT 10;",
+        "SELECT COUNT(*) FROM departments;",
+        "SELECT * FROM departments ORDER BY department_id DESC LIMIT 5;",
+        "SELECT * FROM departments WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(created_at), COUNT(*) FROM departments GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;"
+      ],
+      "row_count": 10
+    },
+    "employees": {
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('employees_employee_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "branch_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "department_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "employee_number",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "first_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "last_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "middle_name",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "email",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "phone",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 15,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "hire_date",
+          "type": "date",
+          "nullable": true,
+          "default": "CURRENT_DATE",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "termination_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "job_title",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "salary",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 12,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "commission_rate",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.0000",
+          "max_length": null,
+          "precision": 5,
+          "scale": 4,
+          "comment": null
+        },
+        {
+          "name": "manager_id",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM employees LIMIT 10;",
+        "SELECT COUNT(*) FROM employees;",
+        "SELECT * FROM employees ORDER BY employee_id DESC LIMIT 5;",
+        "SELECT * FROM employees WHERE hire_date >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(hire_date), COUNT(*) FROM employees GROUP BY DATE(hire_date) ORDER BY DATE(hire_date) DESC LIMIT 10;"
+      ],
+      "row_count": 800
+    },
+    "merchant_categories": {
+      "columns": [
+        {
+          "name": "mcc_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('merchant_categories_mcc_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "mcc_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 4,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "category_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "category_description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "risk_level",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'LOW'::character varying",
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM merchant_categories LIMIT 10;",
+        "SELECT COUNT(*) FROM merchant_categories;",
+        "SELECT * FROM merchant_categories ORDER BY mcc_id DESC LIMIT 5;",
+        "SELECT * FROM merchant_categories WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(created_at), COUNT(*) FROM merchant_categories GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;"
+      ],
+      "row_count": 15
+    },
+    "merchants": {
+      "columns": [
+        {
+          "name": "merchant_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('merchants_merchant_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "mcc_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "merchant_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "dba_name",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "merchant_number",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "city_id",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "address_line1",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "zip_code",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "phone",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 15,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM merchants LIMIT 10;",
+        "SELECT COUNT(*) FROM merchants;",
+        "SELECT * FROM merchants ORDER BY merchant_id DESC LIMIT 5;",
+        "SELECT * FROM merchants WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(created_at), COUNT(*) FROM merchants GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;"
+      ],
+      "row_count": 1000
+    },
+    "product_categories": {
+      "columns": [
+        {
+          "name": "category_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('product_categories_category_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "category_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "category_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "category_type",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 30,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "regulatory_code",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM product_categories LIMIT 10;",
+        "SELECT COUNT(*) FROM product_categories;",
+        "SELECT * FROM product_categories ORDER BY category_id DESC LIMIT 5;",
+        "SELECT * FROM product_categories WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(created_at), COUNT(*) FROM product_categories GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;"
+      ],
+      "row_count": 10
+    },
+    "products": {
+      "columns": [
+        {
+          "name": "product_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('products_product_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "category_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "product_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "product_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "minimum_balance",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "maximum_balance",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "base_interest_rate",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.0000",
+          "max_length": null,
+          "precision": 5,
+          "scale": 4,
+          "comment": null
+        },
+        {
+          "name": "penalty_rate",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.0000",
+          "max_length": null,
+          "precision": 5,
+          "scale": 4,
+          "comment": null
+        },
+        {
+          "name": "monthly_fee",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 8,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "annual_fee",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 8,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "overdraft_limit",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 12,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "grace_period_days",
+          "type": "integer",
+          "nullable": true,
+          "default": "0",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "launch_date",
+          "type": "date",
+          "nullable": true,
+          "default": "CURRENT_DATE",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "discontinue_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM products LIMIT 10;",
+        "SELECT COUNT(*) FROM products;",
+        "SELECT * FROM products ORDER BY product_id DESC LIMIT 5;",
+        "SELECT * FROM products WHERE launch_date >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(launch_date), COUNT(*) FROM products GROUP BY DATE(launch_date) ORDER BY DATE(launch_date) DESC LIMIT 10;"
+      ],
+      "row_count": 50
+    },
+    "regions": {
+      "columns": [
+        {
+          "name": "region_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('regions_region_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "region_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "region_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "region_manager",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "established_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM regions LIMIT 10;",
+        "SELECT COUNT(*) FROM regions;",
+        "SELECT * FROM regions ORDER BY region_id DESC LIMIT 5;",
+        "SELECT * FROM regions WHERE established_date >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(established_date), COUNT(*) FROM regions GROUP BY DATE(established_date) ORDER BY DATE(established_date) DESC LIMIT 10;"
+      ],
+      "row_count": 8
+    },
+    "states": {
+      "columns": [
+        {
+          "name": "state_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('states_state_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "country_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "state_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 5,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "state_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "tax_rate",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.0000",
+          "max_length": null,
+          "precision": 5,
+          "scale": 4,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM states LIMIT 10;",
+        "SELECT COUNT(*) FROM states;",
+        "SELECT * FROM states ORDER BY state_id DESC LIMIT 5;",
+        "SELECT * FROM states WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(created_at), COUNT(*) FROM states GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;"
+      ],
+      "row_count": 50
+    },
+    "transaction_types": {
+      "columns": [
+        {
+          "name": "transaction_type_id",
+          "type": "integer",
+          "nullable": false,
+          "default": "nextval('transaction_types_transaction_type_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "type_code",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 10,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "type_name",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "debit_credit",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 6,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "requires_approval",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "fee_applicable",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "regulatory_reporting",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "default": "true",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM transaction_types LIMIT 10;",
+        "SELECT COUNT(*) FROM transaction_types;",
+        "SELECT * FROM transaction_types ORDER BY transaction_type_id DESC LIMIT 5;",
+        "SELECT * FROM transaction_types WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(created_at), COUNT(*) FROM transaction_types GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;"
+      ],
+      "row_count": 15
+    },
+    "transactions": {
+      "columns": [
+        {
+          "name": "transaction_id",
+          "type": "bigint",
+          "nullable": false,
+          "default": "nextval('transactions_transaction_id_seq'::regclass)",
+          "max_length": null,
+          "precision": 64,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "account_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "transaction_type_id",
+          "type": "integer",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "merchant_id",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "transaction_number",
+          "type": "character varying",
+          "nullable": false,
+          "default": null,
+          "max_length": 30,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "reference_number",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "authorization_code",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "transaction_amount",
+          "type": "numeric",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "fee_amount",
+          "type": "numeric",
+          "nullable": true,
+          "default": "0.00",
+          "max_length": null,
+          "precision": 8,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "total_amount",
+          "type": "numeric",
+          "nullable": false,
+          "default": null,
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "running_balance",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "original_amount",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 15,
+          "scale": 2,
+          "comment": null
+        },
+        {
+          "name": "original_currency",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'USD'::character varying",
+          "max_length": 3,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "exchange_rate",
+          "type": "numeric",
+          "nullable": true,
+          "default": "1.000000",
+          "max_length": null,
+          "precision": 10,
+          "scale": 6,
+          "comment": null
+        },
+        {
+          "name": "transaction_date",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "value_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "posted_date",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "effective_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "memo",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 200,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "category",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 50,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "channel",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "terminal_id",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 20,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "location_description",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "city_id",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "status",
+          "type": "character varying",
+          "nullable": true,
+          "default": "'POSTED'::character varying",
+          "max_length": 15,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "hold_reason",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 100,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "release_date",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "risk_score",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 32,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "fraud_flag",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "aml_flag",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "regulatory_flag",
+          "type": "boolean",
+          "nullable": true,
+          "default": "false",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "parent_transaction_id",
+          "type": "bigint",
+          "nullable": true,
+          "default": null,
+          "max_length": null,
+          "precision": 64,
+          "scale": 0,
+          "comment": null
+        },
+        {
+          "name": "batch_id",
+          "type": "character varying",
+          "nullable": true,
+          "default": null,
+          "max_length": 30,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": "CURRENT_TIMESTAMP",
+          "max_length": null,
+          "precision": null,
+          "scale": null,
+          "comment": null
+        }
+      ],
+      "comment": null,
+      "sample_queries": [
+        "SELECT * FROM transactions LIMIT 10;",
+        "SELECT COUNT(*) FROM transactions;",
+        "SELECT * FROM transactions ORDER BY transaction_id DESC LIMIT 5;",
+        "SELECT * FROM transactions WHERE transaction_date >= CURRENT_DATE - INTERVAL '30 days';",
+        "SELECT DATE(transaction_date), COUNT(*) FROM transactions GROUP BY DATE(transaction_date) ORDER BY DATE(transaction_date) DESC LIMIT 10;"
+      ],
+      "row_count": 5000
+    }
+  },
+  "relationships": [
+    {
+      "source_table": "accounts",
+      "source_column": "branch_id",
+      "target_table": "branches",
+      "target_column": "branch_id",
+      "constraint_name": "accounts_branch_id_fkey"
+    },
+    {
+      "source_table": "accounts",
+      "source_column": "customer_id",
+      "target_table": "customers",
+      "target_column": "customer_id",
+      "constraint_name": "accounts_customer_id_fkey"
+    },
+    {
+      "source_table": "accounts",
+      "source_column": "product_id",
+      "target_table": "products",
+      "target_column": "product_id",
+      "constraint_name": "accounts_product_id_fkey"
+    },
+    {
+      "source_table": "accounts",
+      "source_column": "relationship_manager_id",
+      "target_table": "employees",
+      "target_column": "employee_id",
+      "constraint_name": "accounts_relationship_manager_id_fkey"
+    },
+    {
+      "source_table": "branches",
+      "source_column": "city_id",
+      "target_table": "cities",
+      "target_column": "city_id",
+      "constraint_name": "branches_city_id_fkey"
+    },
+    {
+      "source_table": "branches",
+      "source_column": "region_id",
+      "target_table": "regions",
+      "target_column": "region_id",
+      "constraint_name": "branches_region_id_fkey"
+    },
+    {
+      "source_table": "cities",
+      "source_column": "state_id",
+      "target_table": "states",
+      "target_column": "state_id",
+      "constraint_name": "cities_state_id_fkey"
+    },
+    {
+      "source_table": "customers",
+      "source_column": "city_id",
+      "target_table": "cities",
+      "target_column": "city_id",
+      "constraint_name": "customers_city_id_fkey"
+    },
+    {
+      "source_table": "customers",
+      "source_column": "customer_type_id",
+      "target_table": "customer_types",
+      "target_column": "customer_type_id",
+      "constraint_name": "customers_customer_type_id_fkey"
+    },
+    {
+      "source_table": "customers",
+      "source_column": "primary_branch_id",
+      "target_table": "branches",
+      "target_column": "branch_id",
+      "constraint_name": "customers_primary_branch_id_fkey"
+    },
+    {
+      "source_table": "customers",
+      "source_column": "relationship_manager_id",
+      "target_table": "employees",
+      "target_column": "employee_id",
+      "constraint_name": "customers_relationship_manager_id_fkey"
+    },
+    {
+      "source_table": "customers",
+      "source_column": "segment_id",
+      "target_table": "customer_segments",
+      "target_column": "segment_id",
+      "constraint_name": "customers_segment_id_fkey"
+    },
+    {
+      "source_table": "employees",
+      "source_column": "branch_id",
+      "target_table": "branches",
+      "target_column": "branch_id",
+      "constraint_name": "employees_branch_id_fkey"
+    },
+    {
+      "source_table": "employees",
+      "source_column": "department_id",
+      "target_table": "departments",
+      "target_column": "department_id",
+      "constraint_name": "employees_department_id_fkey"
+    },
+    {
+      "source_table": "employees",
+      "source_column": "manager_id",
+      "target_table": "employees",
+      "target_column": "employee_id",
+      "constraint_name": "employees_manager_id_fkey"
+    },
+    {
+      "source_table": "merchants",
+      "source_column": "city_id",
+      "target_table": "cities",
+      "target_column": "city_id",
+      "constraint_name": "merchants_city_id_fkey"
+    },
+    {
+      "source_table": "merchants",
+      "source_column": "mcc_id",
+      "target_table": "merchant_categories",
+      "target_column": "mcc_id",
+      "constraint_name": "merchants_mcc_id_fkey"
+    },
+    {
+      "source_table": "products",
+      "source_column": "category_id",
+      "target_table": "product_categories",
+      "target_column": "category_id",
+      "constraint_name": "products_category_id_fkey"
+    },
+    {
+      "source_table": "states",
+      "source_column": "country_id",
+      "target_table": "countries",
+      "target_column": "country_id",
+      "constraint_name": "states_country_id_fkey"
+    },
+    {
+      "source_table": "transactions",
+      "source_column": "account_id",
+      "target_table": "accounts",
+      "target_column": "account_id",
+      "constraint_name": "transactions_account_id_fkey"
+    },
+    {
+      "source_table": "transactions",
+      "source_column": "city_id",
+      "target_table": "cities",
+      "target_column": "city_id",
+      "constraint_name": "transactions_city_id_fkey"
+    },
+    {
+      "source_table": "transactions",
+      "source_column": "merchant_id",
+      "target_table": "merchants",
+      "target_column": "merchant_id",
+      "constraint_name": "transactions_merchant_id_fkey"
+    },
+    {
+      "source_table": "transactions",
+      "source_column": "parent_transaction_id",
+      "target_table": "transactions",
+      "target_column": "transaction_id",
+      "constraint_name": "transactions_parent_transaction_id_fkey"
+    },
+    {
+      "source_table": "transactions",
+      "source_column": "transaction_type_id",
+      "target_table": "transaction_types",
+      "target_column": "transaction_type_id",
+      "constraint_name": "transactions_transaction_type_id_fkey"
+    }
+  ],
+  "indexes": [
+    {
+      "schema": "public",
+      "table": "accounts",
+      "name": "accounts_account_number_key",
+      "definition": "CREATE UNIQUE INDEX accounts_account_number_key ON public.accounts USING btree (account_number)"
+    },
+    {
+      "schema": "public",
+      "table": "accounts",
+      "name": "accounts_pkey",
+      "definition": "CREATE UNIQUE INDEX accounts_pkey ON public.accounts USING btree (account_id)"
+    },
+    {
+      "schema": "public",
+      "table": "accounts",
+      "name": "idx_accounts_branch",
+      "definition": "CREATE INDEX idx_accounts_branch ON public.accounts USING btree (branch_id)"
+    },
+    {
+      "schema": "public",
+      "table": "accounts",
+      "name": "idx_accounts_customer",
+      "definition": "CREATE INDEX idx_accounts_customer ON public.accounts USING btree (customer_id)"
+    },
+    {
+      "schema": "public",
+      "table": "accounts",
+      "name": "idx_accounts_number",
+      "definition": "CREATE INDEX idx_accounts_number ON public.accounts USING btree (account_number)"
+    },
+    {
+      "schema": "public",
+      "table": "accounts",
+      "name": "idx_accounts_opened_date",
+      "definition": "CREATE INDEX idx_accounts_opened_date ON public.accounts USING btree (opened_date)"
+    },
+    {
+      "schema": "public",
+      "table": "accounts",
+      "name": "idx_accounts_product",
+      "definition": "CREATE INDEX idx_accounts_product ON public.accounts USING btree (product_id)"
+    },
+    {
+      "schema": "public",
+      "table": "accounts",
+      "name": "idx_accounts_status",
+      "definition": "CREATE INDEX idx_accounts_status ON public.accounts USING btree (status)"
+    },
+    {
+      "schema": "public",
+      "table": "branches",
+      "name": "branches_branch_code_key",
+      "definition": "CREATE UNIQUE INDEX branches_branch_code_key ON public.branches USING btree (branch_code)"
+    },
+    {
+      "schema": "public",
+      "table": "branches",
+      "name": "branches_pkey",
+      "definition": "CREATE UNIQUE INDEX branches_pkey ON public.branches USING btree (branch_id)"
+    },
+    {
+      "schema": "public",
+      "table": "branches",
+      "name": "idx_branches_active",
+      "definition": "CREATE INDEX idx_branches_active ON public.branches USING btree (is_active)"
+    },
+    {
+      "schema": "public",
+      "table": "branches",
+      "name": "idx_branches_city",
+      "definition": "CREATE INDEX idx_branches_city ON public.branches USING btree (city_id)"
+    },
+    {
+      "schema": "public",
+      "table": "branches",
+      "name": "idx_branches_region",
+      "definition": "CREATE INDEX idx_branches_region ON public.branches USING btree (region_id)"
+    },
+    {
+      "schema": "public",
+      "table": "cities",
+      "name": "cities_pkey",
+      "definition": "CREATE UNIQUE INDEX cities_pkey ON public.cities USING btree (city_id)"
+    },
+    {
+      "schema": "public",
+      "table": "cities",
+      "name": "uk_cities_name_state",
+      "definition": "CREATE UNIQUE INDEX uk_cities_name_state ON public.cities USING btree (state_id, city_name)"
+    },
+    {
+      "schema": "public",
+      "table": "countries",
+      "name": "countries_country_code_key",
+      "definition": "CREATE UNIQUE INDEX countries_country_code_key ON public.countries USING btree (country_code)"
+    },
+    {
+      "schema": "public",
+      "table": "countries",
+      "name": "countries_pkey",
+      "definition": "CREATE UNIQUE INDEX countries_pkey ON public.countries USING btree (country_id)"
+    },
+    {
+      "schema": "public",
+      "table": "countries",
+      "name": "uk_countries_name",
+      "definition": "CREATE UNIQUE INDEX uk_countries_name ON public.countries USING btree (country_name)"
+    },
+    {
+      "schema": "public",
+      "table": "customer_segments",
+      "name": "customer_segments_pkey",
+      "definition": "CREATE UNIQUE INDEX customer_segments_pkey ON public.customer_segments USING btree (segment_id)"
+    },
+    {
+      "schema": "public",
+      "table": "customer_segments",
+      "name": "customer_segments_segment_code_key",
+      "definition": "CREATE UNIQUE INDEX customer_segments_segment_code_key ON public.customer_segments USING btree (segment_code)"
+    },
+    {
+      "schema": "public",
+      "table": "customer_segments",
+      "name": "customer_segments_segment_name_key",
+      "definition": "CREATE UNIQUE INDEX customer_segments_segment_name_key ON public.customer_segments USING btree (segment_name)"
+    },
+    {
+      "schema": "public",
+      "table": "customer_types",
+      "name": "customer_types_pkey",
+      "definition": "CREATE UNIQUE INDEX customer_types_pkey ON public.customer_types USING btree (customer_type_id)"
+    },
+    {
+      "schema": "public",
+      "table": "customer_types",
+      "name": "customer_types_type_code_key",
+      "definition": "CREATE UNIQUE INDEX customer_types_type_code_key ON public.customer_types USING btree (type_code)"
+    },
+    {
+      "schema": "public",
+      "table": "customer_types",
+      "name": "customer_types_type_name_key",
+      "definition": "CREATE UNIQUE INDEX customer_types_type_name_key ON public.customer_types USING btree (type_name)"
+    },
+    {
+      "schema": "public",
+      "table": "customers",
+      "name": "customers_customer_number_key",
+      "definition": "CREATE UNIQUE INDEX customers_customer_number_key ON public.customers USING btree (customer_number)"
+    },
+    {
+      "schema": "public",
+      "table": "customers",
+      "name": "customers_email_key",
+      "definition": "CREATE UNIQUE INDEX customers_email_key ON public.customers USING btree (email)"
+    },
+    {
+      "schema": "public",
+      "table": "customers",
+      "name": "customers_pkey",
+      "definition": "CREATE UNIQUE INDEX customers_pkey ON public.customers USING btree (customer_id)"
+    },
+    {
+      "schema": "public",
+      "table": "customers",
+      "name": "customers_ssn_key",
+      "definition": "CREATE UNIQUE INDEX customers_ssn_key ON public.customers USING btree (ssn)"
+    },
+    {
+      "schema": "public",
+      "table": "customers",
+      "name": "idx_customers_branch",
+      "definition": "CREATE INDEX idx_customers_branch ON public.customers USING btree (primary_branch_id)"
+    },
+    {
+      "schema": "public",
+      "table": "customers",
+      "name": "idx_customers_city",
+      "definition": "CREATE INDEX idx_customers_city ON public.customers USING btree (city_id)"
+    },
+    {
+      "schema": "public",
+      "table": "customers",
+      "name": "idx_customers_email",
+      "definition": "CREATE INDEX idx_customers_email ON public.customers USING btree (email)"
+    },
+    {
+      "schema": "public",
+      "table": "customers",
+      "name": "idx_customers_ssn",
+      "definition": "CREATE INDEX idx_customers_ssn ON public.customers USING btree (ssn) WHERE (ssn IS NOT NULL)"
+    },
+    {
+      "schema": "public",
+      "table": "customers",
+      "name": "idx_customers_status",
+      "definition": "CREATE INDEX idx_customers_status ON public.customers USING btree (is_active, kyc_status, aml_status)"
+    },
+    {
+      "schema": "public",
+      "table": "customers",
+      "name": "idx_customers_type_segment",
+      "definition": "CREATE INDEX idx_customers_type_segment ON public.customers USING btree (customer_type_id, segment_id)"
+    },
+    {
+      "schema": "public",
+      "table": "departments",
+      "name": "departments_department_code_key",
+      "definition": "CREATE UNIQUE INDEX departments_department_code_key ON public.departments USING btree (department_code)"
+    },
+    {
+      "schema": "public",
+      "table": "departments",
+      "name": "departments_pkey",
+      "definition": "CREATE UNIQUE INDEX departments_pkey ON public.departments USING btree (department_id)"
+    },
+    {
+      "schema": "public",
+      "table": "employees",
+      "name": "employees_email_key",
+      "definition": "CREATE UNIQUE INDEX employees_email_key ON public.employees USING btree (email)"
+    },
+    {
+      "schema": "public",
+      "table": "employees",
+      "name": "employees_employee_number_key",
+      "definition": "CREATE UNIQUE INDEX employees_employee_number_key ON public.employees USING btree (employee_number)"
+    },
+    {
+      "schema": "public",
+      "table": "employees",
+      "name": "employees_pkey",
+      "definition": "CREATE UNIQUE INDEX employees_pkey ON public.employees USING btree (employee_id)"
+    },
+    {
+      "schema": "public",
+      "table": "employees",
+      "name": "idx_employees_active",
+      "definition": "CREATE INDEX idx_employees_active ON public.employees USING btree (is_active)"
+    },
+    {
+      "schema": "public",
+      "table": "employees",
+      "name": "idx_employees_branch_dept",
+      "definition": "CREATE INDEX idx_employees_branch_dept ON public.employees USING btree (branch_id, department_id)"
+    },
+    {
+      "schema": "public",
+      "table": "employees",
+      "name": "idx_employees_manager",
+      "definition": "CREATE INDEX idx_employees_manager ON public.employees USING btree (manager_id)"
+    },
+    {
+      "schema": "public",
+      "table": "merchant_categories",
+      "name": "merchant_categories_mcc_code_key",
+      "definition": "CREATE UNIQUE INDEX merchant_categories_mcc_code_key ON public.merchant_categories USING btree (mcc_code)"
+    },
+    {
+      "schema": "public",
+      "table": "merchant_categories",
+      "name": "merchant_categories_pkey",
+      "definition": "CREATE UNIQUE INDEX merchant_categories_pkey ON public.merchant_categories USING btree (mcc_id)"
+    },
+    {
+      "schema": "public",
+      "table": "merchants",
+      "name": "idx_merchants_active",
+      "definition": "CREATE INDEX idx_merchants_active ON public.merchants USING btree (is_active)"
+    },
+    {
+      "schema": "public",
+      "table": "merchants",
+      "name": "idx_merchants_city",
+      "definition": "CREATE INDEX idx_merchants_city ON public.merchants USING btree (city_id)"
+    },
+    {
+      "schema": "public",
+      "table": "merchants",
+      "name": "idx_merchants_mcc",
+      "definition": "CREATE INDEX idx_merchants_mcc ON public.merchants USING btree (mcc_id)"
+    },
+    {
+      "schema": "public",
+      "table": "merchants",
+      "name": "merchants_merchant_number_key",
+      "definition": "CREATE UNIQUE INDEX merchants_merchant_number_key ON public.merchants USING btree (merchant_number)"
+    },
+    {
+      "schema": "public",
+      "table": "merchants",
+      "name": "merchants_pkey",
+      "definition": "CREATE UNIQUE INDEX merchants_pkey ON public.merchants USING btree (merchant_id)"
+    },
+    {
+      "schema": "public",
+      "table": "product_categories",
+      "name": "product_categories_category_code_key",
+      "definition": "CREATE UNIQUE INDEX product_categories_category_code_key ON public.product_categories USING btree (category_code)"
+    },
+    {
+      "schema": "public",
+      "table": "product_categories",
+      "name": "product_categories_category_name_key",
+      "definition": "CREATE UNIQUE INDEX product_categories_category_name_key ON public.product_categories USING btree (category_name)"
+    },
+    {
+      "schema": "public",
+      "table": "product_categories",
+      "name": "product_categories_pkey",
+      "definition": "CREATE UNIQUE INDEX product_categories_pkey ON public.product_categories USING btree (category_id)"
+    },
+    {
+      "schema": "public",
+      "table": "products",
+      "name": "products_pkey",
+      "definition": "CREATE UNIQUE INDEX products_pkey ON public.products USING btree (product_id)"
+    },
+    {
+      "schema": "public",
+      "table": "products",
+      "name": "products_product_code_key",
+      "definition": "CREATE UNIQUE INDEX products_product_code_key ON public.products USING btree (product_code)"
+    },
+    {
+      "schema": "public",
+      "table": "regions",
+      "name": "regions_pkey",
+      "definition": "CREATE UNIQUE INDEX regions_pkey ON public.regions USING btree (region_id)"
+    },
+    {
+      "schema": "public",
+      "table": "regions",
+      "name": "regions_region_code_key",
+      "definition": "CREATE UNIQUE INDEX regions_region_code_key ON public.regions USING btree (region_code)"
+    },
+    {
+      "schema": "public",
+      "table": "states",
+      "name": "states_pkey",
+      "definition": "CREATE UNIQUE INDEX states_pkey ON public.states USING btree (state_id)"
+    },
+    {
+      "schema": "public",
+      "table": "states",
+      "name": "uk_states_code_country",
+      "definition": "CREATE UNIQUE INDEX uk_states_code_country ON public.states USING btree (country_id, state_code)"
+    },
+    {
+      "schema": "public",
+      "table": "states",
+      "name": "uk_states_name_country",
+      "definition": "CREATE UNIQUE INDEX uk_states_name_country ON public.states USING btree (country_id, state_name)"
+    },
+    {
+      "schema": "public",
+      "table": "transaction_types",
+      "name": "transaction_types_pkey",
+      "definition": "CREATE UNIQUE INDEX transaction_types_pkey ON public.transaction_types USING btree (transaction_type_id)"
+    },
+    {
+      "schema": "public",
+      "table": "transaction_types",
+      "name": "transaction_types_type_code_key",
+      "definition": "CREATE UNIQUE INDEX transaction_types_type_code_key ON public.transaction_types USING btree (type_code)"
+    },
+    {
+      "schema": "public",
+      "table": "transactions",
+      "name": "idx_transactions_account",
+      "definition": "CREATE INDEX idx_transactions_account ON public.transactions USING btree (account_id)"
+    },
+    {
+      "schema": "public",
+      "table": "transactions",
+      "name": "idx_transactions_amount",
+      "definition": "CREATE INDEX idx_transactions_amount ON public.transactions USING btree (transaction_amount)"
+    },
+    {
+      "schema": "public",
+      "table": "transactions",
+      "name": "idx_transactions_channel",
+      "definition": "CREATE INDEX idx_transactions_channel ON public.transactions USING btree (channel)"
+    },
+    {
+      "schema": "public",
+      "table": "transactions",
+      "name": "idx_transactions_date",
+      "definition": "CREATE INDEX idx_transactions_date ON public.transactions USING btree (transaction_date)"
+    },
+    {
+      "schema": "public",
+      "table": "transactions",
+      "name": "idx_transactions_merchant",
+      "definition": "CREATE INDEX idx_transactions_merchant ON public.transactions USING btree (merchant_id)"
+    },
+    {
+      "schema": "public",
+      "table": "transactions",
+      "name": "idx_transactions_status",
+      "definition": "CREATE INDEX idx_transactions_status ON public.transactions USING btree (status)"
+    },
+    {
+      "schema": "public",
+      "table": "transactions",
+      "name": "idx_transactions_type",
+      "definition": "CREATE INDEX idx_transactions_type ON public.transactions USING btree (transaction_type_id)"
+    },
+    {
+      "schema": "public",
+      "table": "transactions",
+      "name": "transactions_pkey",
+      "definition": "CREATE UNIQUE INDEX transactions_pkey ON public.transactions USING btree (transaction_id)"
+    },
+    {
+      "schema": "public",
+      "table": "transactions",
+      "name": "transactions_transaction_number_key",
+      "definition": "CREATE UNIQUE INDEX transactions_transaction_number_key ON public.transactions USING btree (transaction_number)"
+    }
+  ],
+  "constraints": [],
+  "sample_data": {}
+}

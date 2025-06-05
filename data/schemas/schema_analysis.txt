@@ -1,0 +1,468 @@
+BANKING DATABASE SCHEMA DOCUMENTATION
+==================================================
+
+TABLE: accounts
+Description: Customer accounts with balances and transaction limits
+Row Count: 2,000
+Columns:
+  - account_id (integer) NOT NULL
+  - customer_id (integer) NOT NULL
+  - product_id (integer) NOT NULL
+  - branch_id (integer) NOT NULL
+  - relationship_manager_id (integer)
+  - account_number (character varying) NOT NULL
+  - routing_number (character varying)
+  - iban (character varying)
+  - swift_code (character varying)
+  - current_balance (numeric)
+  - available_balance (numeric)
+  - pending_balance (numeric)
+  - minimum_balance (numeric)
+  - overdraft_limit (numeric)
+  - interest_rate (numeric)
+  - penalty_rate (numeric)
+  - opened_date (date)
+  - closed_date (date)
+  - maturity_date (date)
+  - last_transaction_date (date)
+  - last_statement_date (date)
+  - next_statement_date (date)
+  - status (character varying)
+  - account_purpose (character varying)
+  - tax_reporting_required (boolean) NOT NULL
+  - regulatory_monitoring (boolean) NOT NULL
+  - daily_transaction_limit (numeric)
+  - monthly_transaction_limit (numeric)
+  - suspicious_activity_flag (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM accounts LIMIT 10;
+  - SELECT COUNT(*) FROM accounts;
+  - SELECT * FROM accounts ORDER BY account_id DESC LIMIT 5;
+  - SELECT * FROM accounts WHERE opened_date >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(opened_date), COUNT(*) FROM accounts GROUP BY DATE(opened_date) ORDER BY DATE(opened_date) DESC LIMIT 10;
+
+TABLE: branches
+Description: Physical bank branch locations and details
+Row Count: 150
+Columns:
+  - branch_id (integer) NOT NULL
+  - region_id (integer) NOT NULL
+  - branch_code (character varying) NOT NULL
+  - branch_name (character varying) NOT NULL
+  - city_id (integer) NOT NULL
+  - address_line1 (character varying) NOT NULL
+  - address_line2 (character varying)
+  - zip_code (character varying) NOT NULL
+  - phone (character varying)
+  - manager_name (character varying)
+  - opened_date (date)
+  - closed_date (date)
+  - branch_type (character varying) NOT NULL
+  - square_footage (integer)
+  - employee_count (integer)
+  - is_active (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM branches LIMIT 10;
+  - SELECT COUNT(*) FROM branches;
+  - SELECT * FROM branches ORDER BY branch_id DESC LIMIT 5;
+  - SELECT * FROM branches WHERE opened_date >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(opened_date), COUNT(*) FROM branches GROUP BY DATE(opened_date) ORDER BY DATE(opened_date) DESC LIMIT 10;
+
+TABLE: cities
+Description: City information with population and economic data
+Row Count: 200
+Columns:
+  - city_id (integer) NOT NULL
+  - state_id (integer) NOT NULL
+  - city_name (character varying) NOT NULL
+  - population (integer)
+  - median_income (numeric)
+  - zip_code_primary (character varying)
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM cities LIMIT 10;
+  - SELECT COUNT(*) FROM cities;
+  - SELECT * FROM cities ORDER BY city_id DESC LIMIT 5;
+  - SELECT * FROM cities WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(created_at), COUNT(*) FROM cities GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;
+
+TABLE: countries
+Description: Reference table containing country information with currencies and tax rates
+Row Count: 10
+Columns:
+  - country_id (integer) NOT NULL
+  - country_code (character varying) NOT NULL
+  - country_name (character varying) NOT NULL
+  - currency_code (character varying) NOT NULL
+  - tax_rate (numeric)
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM countries LIMIT 10;
+  - SELECT COUNT(*) FROM countries;
+  - SELECT * FROM countries ORDER BY country_id DESC LIMIT 5;
+  - SELECT * FROM countries WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(created_at), COUNT(*) FROM countries GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;
+
+TABLE: customer_segments
+Description: Customer classification tiers based on relationship value
+Row Count: 5
+Columns:
+  - segment_id (integer) NOT NULL
+  - segment_name (character varying) NOT NULL
+  - segment_code (character varying) NOT NULL
+  - min_relationship_value (numeric)
+  - max_relationship_value (numeric)
+  - benefits_description (text)
+  - annual_fee (numeric)
+  - is_active (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM customer_segments LIMIT 10;
+  - SELECT COUNT(*) FROM customer_segments;
+  - SELECT * FROM customer_segments ORDER BY segment_id DESC LIMIT 5;
+  - SELECT * FROM customer_segments WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(created_at), COUNT(*) FROM customer_segments GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;
+
+TABLE: customer_types
+Description: Categories of customers (individual, business, corporate)
+Row Count: 5
+Columns:
+  - customer_type_id (integer) NOT NULL
+  - type_name (character varying) NOT NULL
+  - type_code (character varying) NOT NULL
+  - description (text)
+  - requires_business_license (boolean) NOT NULL
+  - requires_ein (boolean) NOT NULL
+  - minimum_age (integer)
+  - is_active (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM customer_types LIMIT 10;
+  - SELECT COUNT(*) FROM customer_types;
+  - SELECT * FROM customer_types ORDER BY customer_type_id DESC LIMIT 5;
+  - SELECT * FROM customer_types WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(created_at), COUNT(*) FROM customer_types GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;
+
+TABLE: customers
+Description: Customer profiles with demographics and financial information
+Row Count: 1,000
+Columns:
+  - customer_id (integer) NOT NULL
+  - customer_number (character varying) NOT NULL
+  - customer_type_id (integer) NOT NULL
+  - segment_id (integer)
+  - relationship_manager_id (integer)
+  - primary_branch_id (integer)
+  - first_name (character varying) NOT NULL
+  - last_name (character varying) NOT NULL
+  - middle_name (character varying)
+  - date_of_birth (date)
+  - ssn (character varying)
+  - ein (character varying)
+  - email (character varying) NOT NULL
+  - phone_primary (character varying)
+  - phone_secondary (character varying)
+  - address_line1 (character varying)
+  - address_line2 (character varying)
+  - city_id (integer)
+  - zip_code (character varying)
+  - annual_income (numeric)
+  - employment_status (character varying)
+  - employer_name (character varying)
+  - occupation (character varying)
+  - credit_score (integer)
+  - customer_since (date)
+  - last_contact_date (date)
+  - next_review_date (date)
+  - risk_rating (character varying)
+  - kyc_status (character varying)
+  - aml_status (character varying)
+  - total_relationship_value (numeric)
+  - lifetime_value (numeric)
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+  - is_active (boolean) NOT NULL
+Sample Queries:
+  - SELECT * FROM customers LIMIT 10;
+  - SELECT COUNT(*) FROM customers;
+  - SELECT * FROM customers ORDER BY customer_id DESC LIMIT 5;
+  - SELECT * FROM customers WHERE date_of_birth >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(date_of_birth), COUNT(*) FROM customers GROUP BY DATE(date_of_birth) ORDER BY DATE(date_of_birth) DESC LIMIT 10;
+
+TABLE: departments
+Description: Bank organizational departments
+Row Count: 10
+Columns:
+  - department_id (integer) NOT NULL
+  - department_name (character varying) NOT NULL
+  - department_code (character varying) NOT NULL
+  - description (text)
+  - is_active (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM departments LIMIT 10;
+  - SELECT COUNT(*) FROM departments;
+  - SELECT * FROM departments ORDER BY department_id DESC LIMIT 5;
+  - SELECT * FROM departments WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(created_at), COUNT(*) FROM departments GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;
+
+TABLE: employees
+Description: Bank staff information with hierarchy and compensation
+Row Count: 800
+Columns:
+  - employee_id (integer) NOT NULL
+  - branch_id (integer) NOT NULL
+  - department_id (integer) NOT NULL
+  - employee_number (character varying) NOT NULL
+  - first_name (character varying) NOT NULL
+  - last_name (character varying) NOT NULL
+  - middle_name (character varying)
+  - email (character varying) NOT NULL
+  - phone (character varying)
+  - hire_date (date)
+  - termination_date (date)
+  - job_title (character varying) NOT NULL
+  - salary (numeric)
+  - commission_rate (numeric)
+  - manager_id (integer)
+  - is_active (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM employees LIMIT 10;
+  - SELECT COUNT(*) FROM employees;
+  - SELECT * FROM employees ORDER BY employee_id DESC LIMIT 5;
+  - SELECT * FROM employees WHERE hire_date >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(hire_date), COUNT(*) FROM employees GROUP BY DATE(hire_date) ORDER BY DATE(hire_date) DESC LIMIT 10;
+
+TABLE: merchant_categories
+Description: Merchant category codes for transaction classification
+Row Count: 15
+Columns:
+  - mcc_id (integer) NOT NULL
+  - mcc_code (character varying) NOT NULL
+  - category_name (character varying) NOT NULL
+  - category_description (text)
+  - risk_level (character varying)
+  - is_active (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM merchant_categories LIMIT 10;
+  - SELECT COUNT(*) FROM merchant_categories;
+  - SELECT * FROM merchant_categories ORDER BY mcc_id DESC LIMIT 5;
+  - SELECT * FROM merchant_categories WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(created_at), COUNT(*) FROM merchant_categories GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;
+
+TABLE: merchants
+Description: Business entities where transactions occur
+Row Count: 1,000
+Columns:
+  - merchant_id (integer) NOT NULL
+  - mcc_id (integer) NOT NULL
+  - merchant_name (character varying) NOT NULL
+  - dba_name (character varying)
+  - merchant_number (character varying)
+  - city_id (integer)
+  - address_line1 (character varying)
+  - zip_code (character varying)
+  - phone (character varying)
+  - is_active (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM merchants LIMIT 10;
+  - SELECT COUNT(*) FROM merchants;
+  - SELECT * FROM merchants ORDER BY merchant_id DESC LIMIT 5;
+  - SELECT * FROM merchants WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(created_at), COUNT(*) FROM merchants GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;
+
+TABLE: product_categories
+Description: Banking product classification (deposits, loans, cards)
+Row Count: 10
+Columns:
+  - category_id (integer) NOT NULL
+  - category_name (character varying) NOT NULL
+  - category_code (character varying) NOT NULL
+  - category_type (character varying) NOT NULL
+  - description (text)
+  - regulatory_code (character varying)
+  - is_active (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM product_categories LIMIT 10;
+  - SELECT COUNT(*) FROM product_categories;
+  - SELECT * FROM product_categories ORDER BY category_id DESC LIMIT 5;
+  - SELECT * FROM product_categories WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(created_at), COUNT(*) FROM product_categories GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;
+
+TABLE: products
+Description: Specific banking products with terms and fees
+Row Count: 50
+Columns:
+  - product_id (integer) NOT NULL
+  - category_id (integer) NOT NULL
+  - product_code (character varying) NOT NULL
+  - product_name (character varying) NOT NULL
+  - description (text)
+  - minimum_balance (numeric)
+  - maximum_balance (numeric)
+  - base_interest_rate (numeric)
+  - penalty_rate (numeric)
+  - monthly_fee (numeric)
+  - annual_fee (numeric)
+  - overdraft_limit (numeric)
+  - grace_period_days (integer)
+  - is_active (boolean) NOT NULL
+  - launch_date (date)
+  - discontinue_date (date)
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM products LIMIT 10;
+  - SELECT COUNT(*) FROM products;
+  - SELECT * FROM products ORDER BY product_id DESC LIMIT 5;
+  - SELECT * FROM products WHERE launch_date >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(launch_date), COUNT(*) FROM products GROUP BY DATE(launch_date) ORDER BY DATE(launch_date) DESC LIMIT 10;
+
+TABLE: regions
+Description: Bank operational regions for branch organization
+Row Count: 8
+Columns:
+  - region_id (integer) NOT NULL
+  - region_name (character varying) NOT NULL
+  - region_code (character varying) NOT NULL
+  - region_manager (character varying)
+  - established_date (date)
+  - is_active (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM regions LIMIT 10;
+  - SELECT COUNT(*) FROM regions;
+  - SELECT * FROM regions ORDER BY region_id DESC LIMIT 5;
+  - SELECT * FROM regions WHERE established_date >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(established_date), COUNT(*) FROM regions GROUP BY DATE(established_date) ORDER BY DATE(established_date) DESC LIMIT 10;
+
+TABLE: states
+Description: Geographic reference for US states and provinces
+Row Count: 50
+Columns:
+  - state_id (integer) NOT NULL
+  - country_id (integer) NOT NULL
+  - state_code (character varying) NOT NULL
+  - state_name (character varying) NOT NULL
+  - tax_rate (numeric)
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM states LIMIT 10;
+  - SELECT COUNT(*) FROM states;
+  - SELECT * FROM states ORDER BY state_id DESC LIMIT 5;
+  - SELECT * FROM states WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(created_at), COUNT(*) FROM states GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;
+
+TABLE: transaction_types
+Description: Classification of banking transaction types
+Row Count: 15
+Columns:
+  - transaction_type_id (integer) NOT NULL
+  - type_code (character varying) NOT NULL
+  - type_name (character varying) NOT NULL
+  - description (text)
+  - debit_credit (character varying)
+  - requires_approval (boolean)
+  - fee_applicable (boolean)
+  - regulatory_reporting (boolean)
+  - is_active (boolean) NOT NULL
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM transaction_types LIMIT 10;
+  - SELECT COUNT(*) FROM transaction_types;
+  - SELECT * FROM transaction_types ORDER BY transaction_type_id DESC LIMIT 5;
+  - SELECT * FROM transaction_types WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(created_at), COUNT(*) FROM transaction_types GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 10;
+
+TABLE: transactions
+Description: Individual banking transactions with amounts and details
+Row Count: 5,000
+Columns:
+  - transaction_id (bigint) NOT NULL
+  - account_id (integer) NOT NULL
+  - transaction_type_id (integer) NOT NULL
+  - merchant_id (integer)
+  - transaction_number (character varying) NOT NULL
+  - reference_number (character varying)
+  - authorization_code (character varying)
+  - transaction_amount (numeric) NOT NULL
+  - fee_amount (numeric)
+  - total_amount (numeric) NOT NULL
+  - running_balance (numeric)
+  - original_amount (numeric)
+  - original_currency (character varying)
+  - exchange_rate (numeric)
+  - transaction_date (timestamp without time zone)
+  - value_date (date)
+  - posted_date (timestamp without time zone)
+  - effective_date (date)
+  - description (text)
+  - memo (character varying)
+  - category (character varying)
+  - channel (character varying)
+  - terminal_id (character varying)
+  - location_description (character varying)
+  - city_id (integer)
+  - status (character varying)
+  - hold_reason (character varying)
+  - release_date (timestamp without time zone)
+  - risk_score (integer)
+  - fraud_flag (boolean)
+  - aml_flag (boolean)
+  - regulatory_flag (boolean)
+  - parent_transaction_id (bigint)
+  - batch_id (character varying)
+  - created_at (timestamp without time zone)
+  - updated_at (timestamp without time zone)
+Sample Queries:
+  - SELECT * FROM transactions LIMIT 10;
+  - SELECT COUNT(*) FROM transactions;
+  - SELECT * FROM transactions ORDER BY transaction_id DESC LIMIT 5;
+  - SELECT * FROM transactions WHERE transaction_date >= CURRENT_DATE - INTERVAL '30 days';
+  - SELECT DATE(transaction_date), COUNT(*) FROM transactions GROUP BY DATE(transaction_date) ORDER BY DATE(transaction_date) DESC LIMIT 10;
+
+TABLE RELATIONSHIPS:
+  accounts.branch_id -> branches.branch_id
+  accounts.customer_id -> customers.customer_id
+  accounts.product_id -> products.product_id
+  accounts.relationship_manager_id -> employees.employee_id
+  branches.city_id -> cities.city_id
+  branches.region_id -> regions.region_id
+  cities.state_id -> states.state_id
+  customers.city_id -> cities.city_id
+  customers.customer_type_id -> customer_types.customer_type_id
+  customers.primary_branch_id -> branches.branch_id
+  customers.relationship_manager_id -> employees.employee_id
+  customers.segment_id -> customer_segments.segment_id
+  employees.branch_id -> branches.branch_id
+  employees.department_id -> departments.department_id
+  employees.manager_id -> employees.employee_id
+  merchants.city_id -> cities.city_id
+  merchants.mcc_id -> merchant_categories.mcc_id
+  products.category_id -> product_categories.category_id
+  states.country_id -> countries.country_id
+  transactions.account_id -> accounts.account_id
+  transactions.city_id -> cities.city_id
+  transactions.merchant_id -> merchants.merchant_id
+  transactions.parent_transaction_id -> transactions.transaction_id
+  transactions.transaction_type_id -> transaction_types.transaction_type_id

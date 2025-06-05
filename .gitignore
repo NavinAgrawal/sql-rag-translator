@@ -1,0 +1,34 @@
+# Virtual environment
+venv-sql-rag/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Environment and config
+.env
+.venv
+
+# Data files
+data/embeddings/*
+data/exports/*
+*.db
+*.sqlite
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
