@@ -3358,34 +3358,6 @@
     "geographic_customer_queries": [
       "customers.city_id \u2192 cities.city_id",
       "cities.state_id \u2192 states.state_id"
-    ],
-    "branch_employee_queries": [
-      "branches.branch_id \u2192 employees.branch_id",
-      "Filter active employees: WHERE employees.termination_date IS NULL"
     ]
-  },
-  "query_patterns": {
-    "customer_balances": {
-      "description": "For customer balance queries, use accounts.current_balance",
-      "tables": [
-        "customers",
-        "accounts"
-      ],
-      "join": "customers.customer_id = accounts.customer_id",
-      "aggregate": "SUM(accounts.current_balance) as total_balance"
-    },
-    "customer_transactions": {
-      "description": "For customer transaction queries, go through accounts",
-      "tables": [
-        "customers",
-        "accounts",
-        "transactions"
-      ],
-      "joins": [
-        "customers.customer_id = accounts.customer_id",
-        "accounts.account_id = transactions.account_id"
-      ],
-      "note": "transactions table has NO customer_id column - must go through accounts"
-    }
   }
 }
